@@ -1,4 +1,4 @@
-baseURL = "steinw.cc"
+baseURL = "steinw.cc/"
 languageCode = "en-us"
 title = "My New Hugo Site"
 theme = "ananke"
