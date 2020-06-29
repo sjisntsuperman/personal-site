@@ -1,4 +1,4 @@
-baseURL = "steinw.cc"
+baseURL = "https://sjisntsuperman.github.io/personal-site/"
 languageCode = "en-us"
 title = "My New Hugo Site"
 theme = "ananke"
