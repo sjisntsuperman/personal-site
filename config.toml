@@ -1,5 +1,5 @@
-baseURL = "https://sjisntsuperman.github.io/personal-site/"
+baseURL = "steinw.cc"
 languageCode = "en-us"
-title = "My New Hugo Site"
+title = "steinw's blog"
 theme = "ananke"
 publishDir = "docs"
