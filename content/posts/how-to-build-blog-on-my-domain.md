@@ -1,8 +1,17 @@
 ---
 title: "How to Build Blog on My Domain"
 date: 2020-06-26T04:56:24+08:00
-draft: true
+featured_image: "images/built-blog/built-blog.jpg"
+omit_header_text: true
+description: We'd love to hear from you
+summary: '123'
 ---
+
+---
+
+> 一天，小明逛论坛的时候无意点开别人的blog，好漂亮，我也想整一个！之后，一篇踩坑文章指北就此诞生。
+
+### 分析需求
 
 我没有计算机知识，但是想要用自己的域名建一个博客，那么该如何做到呢？
 
@@ -10,7 +19,7 @@ draft: true
 
 首先，推荐区wordpress上看自己喜欢的主题，然后根据官网的教程，搭建博客。
 
-域名的话，如果不想花钱，可以到freenom.com上面购买（需要科学上网）。
+域名的话，如果不想花钱，可以到freenom.com上面购买。
 
 如果想要形如 .com后缀的话，则需要花钱，推荐去namelime上购买。
 

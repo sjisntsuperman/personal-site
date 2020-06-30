@@ -23,3 +23,6 @@ cd docs && git add --all && git commit -m "Publishing to gh-pages (publish.sh)"
 
 echo "Push to origin"
 git push origin gh-pages
+
+echo "Removing existing files"
+rm -rf docs/*
