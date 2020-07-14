@@ -4,6 +4,7 @@ date: {{ .Date }}
 tags: []
 featured_image: ""
 description: ""
+summary: ""
 draft: true
 ---
 
