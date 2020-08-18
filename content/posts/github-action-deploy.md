@@ -9,4 +9,3 @@ draft: true
 ---
 
 > 最近看到了github出了个github action的CI工具，感觉挺方便的，于是想试用下。
-
