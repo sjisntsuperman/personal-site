@@ -4,11 +4,18 @@
         <link>http://steinw.cc/posts/</link>
         <description>所有Articles | steinw&#39;s blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 02 Mar 2017 12:00:00 -0500</lastBuildDate><atom:link href="http://steinw.cc/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>JS中的正则表达式</title>
+    <link>http://steinw.cc/reg/</link>
+    <pubDate>Wed, 29 Jul 2020 09:33:06 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://steinw.cc/reg/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>深入浅出vuejs读后感</title>
-    <link>http://steinw.cc/%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BAvuejs%E8%AF%BB%E5%90%8E%E6%84%9F/</link>
+    <link>http://steinw.cc/feeling-of-vuejs/</link>
     <pubDate>Tue, 28 Jul 2020 04:25:35 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>http://steinw.cc/%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BAvuejs%E8%AF%BB%E5%90%8E%E6%84%9F/</guid>
+    <guid>http://steinw.cc/feeling-of-vuejs/</guid>
     <description><![CDATA[深入浅出vuejs读后感 一次失败的购书体验 最近，通过闲鱼这个二手平台，买了本技术书籍。这是我第一次在闲鱼平台上买书。没想到，结果却这么令我不]]></description>
 </item><item>
     <title>CDN</title>
@@ -19,17 +26,17 @@
     <description><![CDATA[五分钟带你了解CDN。]]></description>
 </item><item>
     <title>聊聊「位运算」</title>
-    <link>http://steinw.cc/%E8%81%8A%E8%81%8A%E4%BD%8D%E8%BF%90%E7%AE%97/</link>
+    <link>http://steinw.cc/bit-calculate-in-js/</link>
     <pubDate>Wed, 08 Jul 2020 12:00:41 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>http://steinw.cc/%E8%81%8A%E8%81%8A%E4%BD%8D%E8%BF%90%E7%AE%97/</guid>
+    <guid>http://steinw.cc/bit-calculate-in-js/</guid>
     <description><![CDATA[十分钟带你了解JS中的位运算。]]></description>
 </item><item>
     <title>小公司前端面试经历</title>
-    <link>http://steinw.cc/%E5%B0%8F%E5%85%AC%E5%8F%B8%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E7%BB%8F%E5%8E%86/</link>
+    <link>http://steinw.cc/interview-replay/</link>
     <pubDate>Thu, 02 Jul 2020 03:18:00 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>http://steinw.cc/%E5%B0%8F%E5%85%AC%E5%8F%B8%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E7%BB%8F%E5%8E%86/</guid>
+    <guid>http://steinw.cc/interview-replay/</guid>
     <description><![CDATA[分享一些吐槽和心得]]></description>
 </item><item>
     <title>How to Build Blog</title>
