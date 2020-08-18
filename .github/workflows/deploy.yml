@@ -8,9 +8,9 @@ on:
 env:
   GIT_USER: sjisntsuperman
   GIT_EMAIL: weishijiestein@outlook.com
-  THEME_REPO: sjisntsuperman/personal-site.git
+  THEME_REPO: sanonz/hexo-theme-concise
   THEME_BRANCH: master
-  DEPLOY_REPO: steinw.cc
+  DEPLOY_REPO: sanonz/sanonz.github.io
   DEPLOY_BRANCH: master
 
 jobs:
@@ -23,8 +23,8 @@ jobs:
         node_version: [12.x]
 
     steps:
-    #   - name: Checkout
-    #     uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
 
     #   - name: Checkout theme repo
     #     uses: actions/checkout@v2
@@ -58,7 +58,7 @@ jobs:
           git config --global user.email $GIT_EMAIL
           cp _config.theme.yml themes/concise/_config.yml
 
-      - name: deploy
+      - name: Deploy
         run: |
           ssh ./bin/deploy.sh
 
