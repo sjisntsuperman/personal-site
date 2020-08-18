@@ -1,4 +1,4 @@
-baseURL = "http://steinw.cc"
+baseURL = "http://steinw.cc/"
 # [en, zh-cn, fr, pl, ...] determines default content language
 # [en, zh-cn, fr, pl, ...] 设置默认的语言
 defaultContentLanguage = "zh-cn"
@@ -137,7 +137,7 @@ enableEmoji = true
         rss = 10
         # Home page profile
         [languages.en.params.home.profile]
-          enable = true
+          enable = false
           # Gravatar Email for preferred avatar in home page
           gravatarEmail = ""
           # URL of avatar shown in home page
@@ -337,7 +337,7 @@ enableEmoji = true
         rss = 10
         # 主页个人信息
         [languages.zh-cn.params.home.profile]
-          enable = true
+          enable = false
           # Gravatar 邮箱，用于优先在主页显示的头像
           gravatarEmail = ""
           # 主页显示头像的 URL
@@ -660,7 +660,7 @@ enableEmoji = true
       name = "steinw's blog"
       # you can add extra information before the name (HTML format is supported), such as icons
       # 你可以在名称 (允许 HTML 格式) 之前添加其他信息, 例如图标
-      pre = "<i class='far fa-kiss-wink-heart fa-fw'></i>"
+      # pre = "<i class='far fa-kiss-wink-heart fa-fw'></i>"
       # you can add extra information after the name (HTML format is supported), such as icons
       # 你可以在名称 (允许 HTML 格式) 之后添加其他信息, 例如图标
       post = ""
@@ -859,14 +859,14 @@ enableEmoji = true
       # Gitalk 评论系统设置 (https://github.com/gitalk/gitalk)
       [params.page.comment.gitalk]
         enable = false
-        owner = ""
-        repo = ""
+        owner = "steinw"
+        repo = "https://github.com/sjisntsuperman/blog.git"
         clientId = ""
         clientSecret = ""
       # Valine comment config (https://github.com/xCss/Valine)
       # Valine 评论系统设置 (https://github.com/xCss/Valine)
       [params.page.comment.valine]
-        enable = true
+        enable = false
         appId = "QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI"
         appKey = "WBmoGyJtbqUswvfLh6L8iEBr"
         placeholder = ""
@@ -918,7 +918,7 @@ enableEmoji = true
       [params.page.comment.utterances]
         enable = false
         # owner/repo
-        repo = ""
+        repo = "sjisntsuperman/blog"
         issueTerm = "pathname"
         label = ""
         lightTheme = "github-light"
