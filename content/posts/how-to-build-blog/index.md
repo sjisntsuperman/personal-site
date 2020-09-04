@@ -1,7 +1,6 @@
 ---
 title: "How to Build Blog"
 date: 2020-06-26T04:56:24+08:00
-featured_image: "images/built-blog/built-blog.jpg"
 tags: ["record"]
 description: "We'd love to hear from you"
 summary: '记录一下自己搭建博客的点滴。'

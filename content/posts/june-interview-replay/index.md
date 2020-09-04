@@ -1,17 +1,37 @@
 ---
-title: "小公司前端面试经历"
-date: 2020-07-02T03:18:00+08:00
-tags: ["interview"]
-featured_image: "images/lately-interview/lately-interview.jpg"
+title: "Index"
+subtitle: ""
+date: 2020-08-19T20:28:45+08:00
+lastmod: 2020-08-19T20:28:45+08:00
+draft: true
+author: ""
+authorLink: ""
 description: ""
-summary: '分享一些吐槽和心得'
+
+tags: []
+categories: []
+
+hiddenFromHomePage: false
+hiddenFromSearch: false
+
+featuredImage: ""
+featuredImagePreview: ""
+
+toc:
+  enable: true
+math:
+  enable: false
+lightgallery: false
+license: ""
 ---
+
+<!--more-->
 
 休息了挺长一段时间，然后也去找面试机会，来试下自己最近的复习效果。
 
 先说结论， *不理想*。接下来，是对这次面试的复盘。
 
-## 为何不理想？
+## 为何不理想
 
 因为，面试官问的问题，普遍比较简单，然后我还没有答上来，这是让我最失望的一个点。
 
@@ -258,6 +278,6 @@ OOP即面对对象的思想。赋予函数更多的特性，来应对更多的�
 
 #### 参考
 
-[beware-react-setstate-is-asynchronous](https://medium.com/@wereHamster/beware-react-setstate-is-asynchronous-ce87ef1a9cf3)
+1. <https://medium.com/@wereHamster/beware-react-setstate-is-asynchronous-ce87ef1a9cf3>
 
-[模块化进化史](https://juejin.im/post/5c17ad756fb9a049ff4e0a62#heading-2)
+2. <https://juejin.im/post/5c17ad756fb9a049ff4e0a62#heading-2>

@@ -2,7 +2,6 @@
 title: "聊聊「位运算」"
 date: 2020-07-08T12:00:41+08:00
 tags: ["web"]
-featured_image: "images/bit/bit.jpg"
 description: "十分钟带你了解JS中的位运算。"
 summary: "十分钟带你了解JS中的位运算。"
 ---
@@ -27,16 +26,16 @@ console.log(a,b,c);  // 7, 15, 15
 
 - 十进制转二进制
 
-  ```js
-  console.log(Number(3).toString(2)); // 11
-  ```
+```js
+console.log(Number(3).toString(2)); // 11
+```
 
 - 二进制转十进制
 
-  ```js
-  // parseInt(数值, 进制数)
-  console.log(parseInt(3,2)); // 11
-  ```
+```js
+// parseInt(数值, 进制数)
+console.log(parseInt(3,2)); // 11
+```
 
 - 小数转二进制（乘2取整）
 
@@ -77,18 +76,18 @@ console.log(a,b,c);  // 7, 15, 15
 
 - 取奇偶
 
-  ```js
-  console.log(7&1); // 1
-  console.log(4&1); // 0
-  ```
+```js
+console.log(7&1); // 1
+console.log(4&1); // 0
+```
 
 - 取整
 
-  ```js
-  console.log(~~7.77);    // 7
-  console.log(7.77<<0); // 7
-  console.log(7.77>>0); // 7
-  ```
+```js
+console.log(~~7.77);    // 7
+console.log(7.77<<0); // 7
+console.log(7.77>>0); // 7
+```
 
 ## 运用
 

@@ -1,8 +1,8 @@
 ---
-title: "{{ replace .TranslationBaseName "-" " " | title }}"
+title: "JS中的继承"
 subtitle: ""
-date: {{ .Date }}
-lastmod: {{ .Date }}
+date: 2020-08-22T02:55:29+08:00
+lastmod: 2020-08-22T02:55:29+08:00
 draft: true
 author: ""
 authorLink: ""

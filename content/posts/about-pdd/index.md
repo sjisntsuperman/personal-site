@@ -1,12 +1,31 @@
 ---
-title: "对拼多多的看法"
-date: 2020-07-02T03:53:37+08:00
-tags: []
-featured_image: ""
-description: ""
-summary: "之前，对拼多多一直抱有质量不好，不能用的看法，可是最近却频繁用拼多多购物，由此得出的一点看法。"
+title: "Index"
+subtitle: ""
+date: 2020-08-19T20:27:47+08:00
+lastmod: 2020-08-19T20:27:47+08:00
 draft: true
+author: ""
+authorLink: ""
+description: ""
+
+tags: []
+categories: []
+
+hiddenFromHomePage: false
+hiddenFromSearch: false
+
+featuredImage: ""
+featuredImagePreview: ""
+
+toc:
+  enable: true
+math:
+  enable: false
+lightgallery: false
+license: ""
 ---
+
+<!--more-->
 
 ## 之前的购物模式
 

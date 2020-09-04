@@ -2,7 +2,6 @@
 title: "CDN"
 date: 2020-07-09T13:01:13+08:00
 tags: ["web"]
-featured_image: "images/cdn/cdn.jpg"
 description: "五分钟带你了解CDN。"
 summary: "五分钟带你了解CDN。"
 ---
