@@ -276,14 +276,14 @@ enableEmoji = true
       #   url = "/categories/documentation/"
       #   title = ""
       #   weight = 4
-      # [[languages.zh-cn.menu.main]]
-      #   identifier = "about"
-      #   pre = ""
-      #   post = ""
-      #   name = "About"
-      #   url = "/about/"
-      #   title = ""
-      #   weight = 5
+      [[languages.zh-cn.menu.main]]
+        identifier = "about"
+        pre = ""
+        post = ""
+        name = "About"
+        url = "/about/"
+        title = ""
+        weight = 5
       # [[languages.zh-cn.menu.main]]
       #   identifier = "github"
       #   pre = "<i class='fab fa-github fa-fw'></i>"
@@ -431,7 +431,7 @@ enableEmoji = true
   version = "0.2.X"
   # site default theme ("light", "dark", "auto")
   # 网站默认主题 ("light", "dark", "auto")
-  defaultTheme = "auto"
+  defaultTheme = "dark"
   # public git repo url only then enableGitInfo is true
   # 公共 git 仓库路径，仅在 enableGitInfo 设为 true 时有效
   gitRepo = "https://github.com/dillonzq/LoveIt"
@@ -552,7 +552,7 @@ enableEmoji = true
     fontawesome = true
     # whether to show link to Raw Markdown content of the content
     # 是否显示原始 Markdown 文档内容的链接
-    linkToMarkdown = true
+    linkToMarkdown = false
     # whether to show the full text content in RSS
     # 是否在 RSS 中显示全文内容
     rssFullText = false

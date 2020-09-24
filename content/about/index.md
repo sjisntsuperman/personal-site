@@ -1,5 +1,5 @@
 ---
-title: "关于我"
+title: "About me"
 date: 2019-08-02T11:04:49+08:00
 draft: false
 
@@ -19,4 +19,10 @@ math:
 
 不断暴露自己，记录当下的生活和乐趣，这样看起来生活可能并没那么苦。 -->
 
-keep calm， keep passion。
+- 我叫`stein`，目前是一位前端工程师
+
+- github：<https://github.com/sjisntsuperman>
+
+- keep calm， keep passion
+
+- 我们一起努力

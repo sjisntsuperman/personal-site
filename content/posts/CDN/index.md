@@ -8,7 +8,7 @@ summary: "五分钟带你了解CDN。"
 
 > 五分钟带你了解CDN。
 
-## 是什么？
+## 是什么
 
 CDN（Content Delivery Network），即内容分发网络。
 
@@ -19,7 +19,6 @@ CDN（Content Delivery Network），即内容分发网络。
 通过在网络各处放置节点服务器所构成的在现有的互联网基础之上的一层智能虚拟网络，CDN系统能够实时地根据网络流量和各节点的连接、负载状况以及到用户的距离和响应时间等综合信息将用户的请求重新导向离用户最近的服务节点上。
 
 ![](https://imgkr.cn-bj.ufileos.com/017243d6-ea09-4e10-9318-0a67689fb7d4.jpg)
-
 
 ## 过程
 
@@ -43,7 +42,7 @@ CDN（Content Delivery Network），即内容分发网络。
 
 ## 回源问题
 
-### 回源是什么？
+### 回源是什么
 
 客户端请求资源，在DNS缓存服务器上找不到对应资源，然后到上一级服务器上面找，递归下去，如果一直没有找到，就会到服务端地址上面请求资源。这就是回源。
 
@@ -79,5 +78,5 @@ script标签上有个属性，作用是防止篡改。
 
 ## 参考文章
 
-1. https://www.zhihu.com/question/36514327/answer/193768864
-2. https://developer.mozilla.org/zh-CN/docs/Web/Security/%E5%AD%90%E8%B5%84%E6%BA%90%E5%AE%8C%E6%95%B4%E6%80%A7
+1. <https://www.zhihu.com/question/36514327/answer/193768864>
+2. <https://developer.mozilla.org/zh-CN/docs/Web/Security/%E5%AD%90%E8%B5%84%E6%BA%90%E5%AE%8C%E6%95%B4%E6%80%A7>
