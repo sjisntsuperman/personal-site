@@ -1,0 +1,136 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><meta http-equiv=x-ua-compatible content="IE=edge, chrome=1"><title>JS中的类型转换 - steinw's blog</title><meta name=Description content="由于没有魔女能力加持，还是好好学学类型转换。
+JS中的类型转换是出名的大坑，这里简单介绍一下JS的类型转换。"><meta property="og:title" content="JS中的类型转换"><meta property="og:description" content="由于没有魔女能力加持，还是好好学学类型转换。
+JS中的类型转换是出名的大坑，这里简单介绍一下JS的类型转换。"><meta property="og:type" content="article"><meta property="og:url" content="http://steinw.cc/comparison-in-js/"><meta property="og:image" content="http://steinw.cc/logo.png"><meta property="article:published_time" content="2020-09-24T19:02:25+08:00"><meta property="article:modified_time" content="2020-09-24T19:02:25+08:00"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="http://steinw.cc/logo.png"><meta name=twitter:title content="JS中的类型转换"><meta name=twitter:description content="由于没有魔女能力加持，还是好好学学类型转换。
+JS中的类型转换是出名的大坑，这里简单介绍一下JS的类型转换。"><meta name=application-name content="LoveIt"><meta name=apple-mobile-web-app-title content="LoveIt"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=http://steinw.cc/comparison-in-js/><link rel=prev href=http://steinw.cc/why-setstate-is-asynchronous/><link rel=next href=http://steinw.cc/liao-liao-bem/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"JS中的类型转换","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http:\/\/steinw.cc\/comparison-in-js\/"},"image":["http:\/\/steinw.cc\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"“web","wordcount":1221,"url":"http:\/\/steinw.cc\/comparison-in-js\/","datePublished":"2020-09-24T19:02:25+08:00","dateModified":"2020-09-24T19:02:25+08:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"steinw","logo":"http:\/\/steinw.cc\/images\/avatar.png"},"author":{"@type":"Person","name":"steinw"},"description":" 由于没有魔女能力加持，还是好好学学类型转换。\nJS中的类型转换是出名的大坑，这里简单介绍一下JS的类型转换。"}</script></head><body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':('dark'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'dark'==='dark'))&&document.body.setAttribute('theme','dark');</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title="steinw's blog">steinw's blog</a></div><div class=menu><div class=menu-inner><a class=menu-item href=/posts/>Posts </a><a class=menu-item href=/about/>About </a><span class="menu-item delimiter"></span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题><i class="fas fa-adjust fa-fw"></i></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title="steinw's blog">steinw's blog</a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><a class=menu-item href=/posts/>Posts</a><a class=menu-item href=/about/>About</a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw"></i></a></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class=toc id=toc-auto><h2 class=toc-title>目录</h2><div class=toc-content id=toc-content-auto></div></div><article class="page single"><h1 class="single-title animated flipInX">JS中的类型转换</h1><div class=post-meta><div class=post-meta-line><span class=post-author><a href=/ title=Author rel=author class=author><i class="fas fa-user-circle fa-fw"></i>steinw</a></span></div><div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2020-09-24>2020-09-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1221 字&nbsp;
+<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div></div><div class="details toc" id=toc-static kept><div class="details-summary toc-title"><span>目录</span>
+<span><i class="details-icon fas fa-angle-right"></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><a href=#前言>前言</a></li><li><a href=#js中的类型>JS中的类型</a><ul><li><a href=#基础类型>基础类型</a></li><li><a href=#引用类型>引用类型</a></li></ul></li><li><a href=#tostring>toString</a></li><li><a href=#valueof>ValueOf</a></li><li><a href=#toprimitive>toPrimitive</a><ul><li><a href=#原始值>原始值</a></li></ul></li><li><a href=#instanceof-和-typeof>instanceof 和 typeof</a></li><li><a href=#比较符>比较符</a><ul><li><a href=#heading>==</a></li><li><a href=#heading-1>===</a></li></ul></li><li><a href=#nan>NAN</a></li><li><a href=#运算符号>运算符号</a><ul><li><a href=#heading-2>+</a></li><li><a href=#->-、*、/</a></li></ul></li><li><a href=#参考>参考</a></li></ul></nav></div></div><div class=content id=content><h2 id=前言>前言</h2><blockquote><p>从零开始的类型转换？</p></blockquote><p>由于没有魔女能力加持，还是好好学学类型转换。</p><p>JS中的类型转换是出名的大坑，这里简单介绍一下JS的类型转换。</p><h2 id=js中的类型>JS中的类型</h2><h3 id=基础类型>基础类型</h3><ul><li>Number</li><li>String</li><li>Boolean</li><li>Undefined</li><li>Null</li></ul><h3 id=引用类型>引用类型</h3><ul><li>Object（包含Function、Array）</li><li>Symbol</li></ul><h2 id=tostring>toString</h2><p>是个内置方法，作用是转换为String类型。</p><p>栗子</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-js data-lang=js><span class=kr>const</span> <span class=nx>a</span> <span class=o>=</span> <span class=p>[</span><span class=mi>1</span><span class=p>]</span>
+<span class=kr>const</span> <span class=nx>b</span> <span class=o>=</span> <span class=p>{</span><span class=mi>0</span><span class=o>:</span><span class=mi>1</span><span class=p>}</span>
+<span class=kr>const</span> <span class=nx>c</span> <span class=o>=</span> <span class=mi>1</span>
+<span class=kr>const</span> <span class=nx>d</span> <span class=o>=</span> <span class=kc>false</span>
+
+<span class=nx>a</span><span class=p>.</span><span class=nx>toString</span><span class=p>()</span> <span class=c1>// &#39;1&#39;
+</span><span class=c1></span><span class=nx>b</span><span class=p>.</span><span class=nx>toString</span><span class=p>()</span> <span class=c1>// &#39;[object Object]&#39;
+</span><span class=c1></span><span class=nx>c</span><span class=p>.</span><span class=nx>toString</span><span class=p>()</span> <span class=c1>// &#39;1&#39;
+</span><span class=c1></span><span class=nx>d</span><span class=p>.</span><span class=nx>toString</span><span class=p>()</span> <span class=c1>// &#39;false&#39;
+</span></code></pre></td></tr></table></div></div><p>除此之外，toString还可以注入参数。</p><p>栗子</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-js data-lang=js><span class=kr>const</span> <span class=nx>a</span> <span class=o>=</span> <span class=mi>3</span>
+<span class=kr>const</span> <span class=nx>b</span> <span class=o>=</span> <span class=mi>10</span>
+
+<span class=nx>a</span><span class=p>.</span><span class=nx>toString</span><span class=p>(</span><span class=mi>2</span><span class=p>)</span> <span class=c1>// 11
+</span><span class=c1></span><span class=nx>a</span><span class=p>.</span><span class=nx>toString</span><span class=p>(</span><span class=mi>8</span><span class=p>)</span> <span class=c1>// 3
+</span><span class=c1></span><span class=nx>b</span><span class=p>.</span><span class=nx>toString</span><span class=p>(</span><span class=mi>2</span><span class=p>)</span> <span class=c1>// 1010
+</span><span class=c1></span><span class=nx>b</span><span class=p>.</span><span class=nx>toString</span><span class=p>(</span><span class=mi>8</span><span class=p>)</span> <span class=c1>// 12
+</span></code></pre></td></tr></table></div></div><p>这里的参数ratix是数字，作用是将a转换为ratix进制的数字。如果ratix比本身的数要大的话，会返回本身。</p><p>也可以用<code>Object.prototype.toString.call(ctx)</code>来判断类型。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-js data-lang=js><span class=nb>Object</span><span class=p>.</span><span class=nx>prototype</span><span class=p>.</span><span class=nx>toString</span><span class=p>.</span><span class=nx>call</span><span class=p>(</span><span class=mi>1</span><span class=p>)</span> <span class=c1>// [object Number]
+</span><span class=c1></span><span class=nb>Object</span><span class=p>.</span><span class=nx>prototype</span><span class=p>.</span><span class=nx>toString</span><span class=p>.</span><span class=nx>call</span><span class=p>([])</span> <span class=c1>// [object Array]
+</span></code></pre></td></tr></table></div></div><p>一些不容易察觉的点</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-js data-lang=js><span class=mf>1.</span><span class=nx>toString</span><span class=p>()</span> <span class=c1>// Invalid or unexpected token
+</span><span class=c1></span><span class=mf>1.</span><span class=p>.</span><span class=nx>toString</span><span class=p>()</span> <span class=c1>// &#39;1&#39;
+</span><span class=c1></span><span class=p>(</span><span class=mi>1</span><span class=p>).</span><span class=nx>toString</span><span class=p>()</span> <span class=c1>// &#39;1&#39;
+</span><span class=c1></span><span class=p>(</span><span class=mf>1.</span><span class=p>).</span><span class=nx>toString</span><span class=p>()</span> <span class=c1>// &#39;1&#39;
+</span></code></pre></td></tr></table></div></div><h2 id=valueof>ValueOf</h2><p>返回本身。</p><p>栗子</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-js data-lang=js><span class=kr>const</span> <span class=nx>a</span> <span class=o>=</span> <span class=p>[</span><span class=mi>1</span><span class=p>]</span>
+<span class=kr>const</span> <span class=nx>b</span> <span class=o>=</span> <span class=p>{</span><span class=mi>0</span><span class=o>:</span><span class=mi>1</span><span class=p>}</span>
+<span class=kr>const</span> <span class=nx>c</span> <span class=o>=</span> <span class=mi>1</span>
+<span class=kr>const</span> <span class=nx>d</span> <span class=o>=</span> <span class=kc>false</span>
+
+<span class=nx>a</span><span class=p>.</span><span class=nx>valueOf</span><span class=p>()</span> <span class=c1>// [1]
+</span><span class=c1></span><span class=nx>b</span><span class=p>.</span><span class=nx>valueOf</span><span class=p>()</span> <span class=c1>// {0:1}
+</span><span class=c1></span><span class=nx>c</span><span class=p>.</span><span class=nx>valueOf</span><span class=p>()</span> <span class=c1>// 1
+</span><span class=c1></span><span class=nx>d</span><span class=p>.</span><span class=nx>valueOf</span><span class=p>()</span> <span class=c1>// false
+</span></code></pre></td></tr></table></div></div><p>以及修改对象的valueOf来达到某些目的</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-js data-lang=js><span class=kr>const</span> <span class=nx>a</span> <span class=o>=</span> <span class=p>{</span>
+    <span class=nx>value</span><span class=o>:</span> <span class=mi>1</span><span class=p>,</span>
+    <span class=nx>valueOf</span><span class=o>:</span> <span class=kd>function</span><span class=p>(){</span>
+        <span class=k>return</span> <span class=k>this</span><span class=p>.</span><span class=nx>value</span><span class=o>++</span>
+    <span class=p>}</span>
+<span class=p>}</span>
+
+<span class=nx>a</span> <span class=o>==</span> <span class=mi>1</span> <span class=o>&amp;&amp;</span> <span class=nx>a</span> <span class=o>==</span> <span class=mi>2</span> <span class=o>&amp;&amp;</span> <span class=nx>a</span> <span class=o>==</span> <span class=mi>3</span> <span class=c1>// true
+</span></code></pre></td></tr></table></div></div><h2 id=toprimitive>toPrimitive</h2><p>返回原始值。</p><h3 id=原始值>原始值</h3><p>符合基础类型的被判定为原始类型。基于这些类型的值也被称为原始值。</p><p>对于引用类型而言，一般流程是：</p><ol><li>判断类型</li><li>valueOf</li><li>toString</li></ol><h2 id=instanceof-和-typeof>instanceof 和 typeof</h2><ul><li>typeof 判断类型</li><li>instanceof 判断继承关系</li></ul><p>栗子</p><p>可能没注意的坑：</p><ul><li>在判断object类型的时候用typeof，注意把null排除掉</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-js data-lang=js><span class=k>typeof</span> <span class=nx>x</span> <span class=o>==</span> <span class=s1>&#39;object&#39;</span> <span class=o>&amp;&amp;</span> <span class=nx>x</span> <span class=o>!==</span> <span class=kc>null</span>
+</code></pre></td></tr></table></div></div><h2 id=比较符>比较符</h2><h3 id=heading>==</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-js data-lang=js><span class=s1>&#39;1&#39;</span> <span class=o>==</span> <span class=mi>1</span>
+<span class=c1>// &#39;1&#39;=&gt;1 != 1 =&gt; true
+</span><span class=c1></span><span class=p>[]</span> <span class=o>==</span> <span class=mi>0</span>
+<span class=c1>// []=&gt;&#39;&#39;=&gt;0=&gt;true
+</span><span class=c1></span><span class=p>{}</span> <span class=o>==</span> <span class=mi>0</span>
+<span class=c1>// {}=&gt;&#39;[object Object]&#39;=&gt;NaN=&gt;false
+</span><span class=c1></span><span class=kc>null</span> <span class=o>==</span> <span class=kc>undefined</span>
+<span class=c1>// true 历史原因
+</span></code></pre></td></tr></table></div></div><p>一般流程：</p><ol><li><code>left</code>和<code>right</code>都不是引用类型</li><li><code>left</code>为String，toNumber(right)</li><li><code>left</code>为Boolean，toNumber(right)</li><li><code>left</code>为Number，toNumber(right)<ol><li><code>+0 != -0</code></li><li>&mldr;</li></ol></li><li><code>left</code>和<code>right</code>其中一个为引用类型或者两者都是</li><li>引用类型遵循先<code>valueOf</code>后<code>toString</code>的原则转化为原始值，再根据上面的条件判断</li><li>比较特殊的: <code>null==undefined</code></li></ol><h3 id=heading-1>===</h3><p>判断类型和值是否对等。不会进行类型转换。有一种情况除外，就是通过一些手段更改对象的<code>get</code>与<code>set</code>函数。</p><p>栗子</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-js data-lang=js><span class=kd>var</span> <span class=nx>value</span> <span class=o>=</span> <span class=mi>1</span>
+
+<span class=nb>Object</span><span class=p>.</span><span class=nx>defineProperty</span><span class=p>(</span><span class=nb>window</span><span class=p>,</span> <span class=s1>&#39;a&#39;</span><span class=p>,</span> <span class=p>{</span>
+    <span class=nx>get</span><span class=p>(</span><span class=nx>val</span><span class=p>){</span>
+        <span class=k>return</span> <span class=nx>value</span><span class=o>++</span>
+    <span class=p>}</span>
+<span class=p>})</span>
+
+<span class=nx>a</span> <span class=o>===</span> <span class=mi>1</span> <span class=o>&amp;&amp;</span> <span class=nx>a</span> <span class=o>===</span> <span class=mi>2</span> <span class=o>&amp;&amp;</span> <span class=nx>a</span> <span class=o>===</span> <span class=mi>3</span> <span class=c1>// true
+</span></code></pre></td></tr></table></div></div><h2 id=nan>NAN</h2><p>JS中比较特殊的一个关键字，就是NAN。</p><p>那么<code>Number().isNAN()</code>与<code>window.isNAN()</code>又有什么区别呢？</p><p>看下面的几个栗子</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-js data-lang=js><span class=nx>NAN</span> <span class=o>===</span> <span class=nx>NAN</span> <span class=c1>// false
+</span><span class=c1></span>
+<span class=nb>window</span><span class=p>.</span><span class=nx>isNAN</span><span class=p>(</span><span class=s1>&#39;String&#39;</span><span class=p>)</span> <span class=c1>// true
+</span><span class=c1></span><span class=nb>Number</span><span class=p>.</span><span class=nx>isNAN</span><span class=p>(</span><span class=s1>&#39;String&#39;</span><span class=p>)</span> <span class=c1>// false
+</span><span class=c1></span>
+<span class=mi>0</span><span class=o>/</span><span class=mi>0</span> <span class=c1>// NAN
+</span><span class=c1></span><span class=mi>0</span> <span class=o>*</span> <span class=kc>Infinity</span> <span class=c1>// NAN
+</span></code></pre></td></tr></table></div></div><p>至于他们有什么具体差异，因为时间关系</p><h2 id=运算符号>运算符号</h2><h3 id=heading-2>+</h3><p>一般流程：</p><ol><li><code>left</code>进入运算</li><li><code>left</code>进行getValue</li><li><code>right</code>进入运算</li><li><code>right</code>进行getValue</li><li><code>left</code>求原始值</li><li><code>right</code>求原始值</li><li><code>left</code>或<code>right</code>为String类型，则两边转化为String类型再进行求值</li><li><code>left</code>或<code>right</code>不为String类型，toNumber然后求值</li></ol><h3 id=->-、*、/</h3><p>不像<code>+</code>这么多功能，它们只有数字运算的功能。遇到非Number类型的值是，会先toNumber再运算取值。</p><h2 id=参考>参考</h2><ol><li><a href=https://www.ecma-international.org/ecma-262/5.1/#sec-11.9.3>https://www.ecma-international.org/ecma-262/5.1/#sec-11.9.3</a></li><li><a href=https://dmitripavlutin.com/nan-in-javascript/>https://dmitripavlutin.com/nan-in-javascript/</a></li></ol></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span>更新于 2020-09-24</span></div><div class=post-info-license></div></div><div class=post-info-line><div class=post-info-md></div><div class=post-info-share><span></span></div></div></div><div class=post-info-more><section class=post-tags><i class="fas fa-tags fa-fw"></i>&nbsp;<a href=/tags/web/>web</a></section><section><span><a href=javascript:void(0); onclick=window.history.back();>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span></section></div><div class=post-nav><a href=/why-setstate-is-asynchronous/ class=prev rel=prev title=面试官系列之setState为何异步><i class="fas fa-angle-left fa-fw"></i>面试官系列之setState为何异步</a>
+<a href=/liao-liao-bem/ class=next rel=next title=BEM>BEM<i class="fas fa-angle-right fa-fw"></i></a></div></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line></div></div></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部><i class="fas fa-arrow-up fa-fw"></i></a><a href=# id=view-comments class=fixed-button title=查看评论><i class="fas fa-comment fa-fw"></i></a></div><script type=text/javascript src=https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js></script><script type=text/javascript>window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{}};</script><script type=text/javascript src=/js/theme.min.js></script></body></html>

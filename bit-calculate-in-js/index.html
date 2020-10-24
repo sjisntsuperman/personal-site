@@ -1,0 +1,157 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><meta http-equiv=x-ua-compatible content="IE=edge, chrome=1"><title>聊聊「位运算」 - steinw's blog</title><meta name=Description content="十分钟带你了解JS中的位运算。"><meta property="og:title" content="聊聊「位运算」"><meta property="og:description" content="十分钟带你了解JS中的位运算。"><meta property="og:type" content="article"><meta property="og:url" content="http://steinw.cc/bit-calculate-in-js/"><meta property="og:image" content="http://steinw.cc/logo.png"><meta property="article:published_time" content="2020-07-08T12:00:41+08:00"><meta property="article:modified_time" content="2020-07-08T12:00:41+08:00"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="http://steinw.cc/logo.png"><meta name=twitter:title content="聊聊「位运算」"><meta name=twitter:description content="十分钟带你了解JS中的位运算。"><meta name=application-name content="LoveIt"><meta name=apple-mobile-web-app-title content="LoveIt"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=http://steinw.cc/bit-calculate-in-js/><link rel=prev href=http://steinw.cc/how-to-build-blog/><link rel=next href=http://steinw.cc/cdn/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"聊聊「位运算」","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http:\/\/steinw.cc\/bit-calculate-in-js\/"},"image":["http:\/\/steinw.cc\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"web","wordcount":1505,"url":"http:\/\/steinw.cc\/bit-calculate-in-js\/","datePublished":"2020-07-08T12:00:41+08:00","dateModified":"2020-07-08T12:00:41+08:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"steinw","logo":"http:\/\/steinw.cc\/images\/avatar.png"},"author":{"@type":"Person","name":"steinw"},"description":"十分钟带你了解JS中的位运算。"}</script></head><body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':('dark'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'dark'==='dark'))&&document.body.setAttribute('theme','dark');</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title="steinw's blog">steinw's blog</a></div><div class=menu><div class=menu-inner><a class=menu-item href=/posts/>Posts </a><a class=menu-item href=/about/>About </a><span class="menu-item delimiter"></span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题><i class="fas fa-adjust fa-fw"></i></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title="steinw's blog">steinw's blog</a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><a class=menu-item href=/posts/>Posts</a><a class=menu-item href=/about/>About</a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw"></i></a></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class=toc id=toc-auto><h2 class=toc-title>目录</h2><div class=toc-content id=toc-content-auto></div></div><article class="page single"><h1 class="single-title animated flipInX">聊聊「位运算」</h1><div class=post-meta><div class=post-meta-line><span class=post-author><a href=/ title=Author rel=author class=author><i class="fas fa-user-circle fa-fw"></i>steinw</a></span></div><div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2020-07-08>2020-07-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1505 字&nbsp;
+<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div></div><div class="details toc" id=toc-static kept><div class="details-summary toc-title"><span>目录</span>
+<span><i class="details-icon fas fa-angle-right"></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><a href=#在js中的表示>在JS中的表示</a></li><li><a href=#进制转换>进制转换</a></li><li><a href=#按位操作符>按位操作符</a></li><li><a href=#一些在js中的技巧>一些在JS中的技巧</a></li><li><a href=#运用>运用</a></li><li><a href=#参考>参考</a></li></ul></nav></div></div><div class=content id=content><blockquote><p>十分钟带你了解JS中的位运算。</p></blockquote><h2 id=在js中的表示>在JS中的表示</h2><ul><li>二进制0b开头</li><li>八进制0开头</li><li>十六进制0x开头</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-js data-lang=js><span class=kd>var</span> <span class=nx>a</span> <span class=o>=</span> <span class=mb>0b111</span><span class=p>;</span>
+<span class=kd>var</span> <span class=nx>b</span> <span class=o>=</span> <span class=mi>017</span><span class=p>;</span>
+<span class=kd>var</span> <span class=nx>c</span> <span class=o>=</span> <span class=mh>0xF</span><span class=p>;</span>
+
+<span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>a</span><span class=p>,</span><span class=nx>b</span><span class=p>,</span><span class=nx>c</span><span class=p>);</span>  <span class=c1>// 7, 15, 15
+</span></code></pre></td></tr></table></div></div><h2 id=进制转换>进制转换</h2><ul><li>十进制转二进制</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-js data-lang=js><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nb>Number</span><span class=p>(</span><span class=mi>3</span><span class=p>).</span><span class=nx>toString</span><span class=p>(</span><span class=mi>2</span><span class=p>));</span> <span class=c1>// 11
+</span></code></pre></td></tr></table></div></div><ul><li>二进制转十进制</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-js data-lang=js><span class=c1>// parseInt(数值, 进制数)
+</span><span class=c1></span><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nb>parseInt</span><span class=p>(</span><span class=mi>3</span><span class=p>,</span><span class=mi>2</span><span class=p>));</span> <span class=c1>// 11
+</span></code></pre></td></tr></table></div></div><ul><li><p>小数转二进制（乘2取整）</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-js data-lang=js><span class=c1>// 0.1
+</span><span class=c1></span><span class=mf>0.1</span> <span class=o>*</span> <span class=mi>2</span> <span class=o>=</span> <span class=mf>0.2</span> <span class=c1>// 0
+</span><span class=c1></span><span class=mf>0.2</span> <span class=o>*</span> <span class=mi>2</span> <span class=o>=</span> <span class=mf>0.4</span> <span class=c1>// 0
+</span><span class=c1></span><span class=mf>0.4</span> <span class=o>*</span> <span class=mi>2</span> <span class=o>=</span> <span class=mf>0.8</span> <span class=c1>// 0
+</span><span class=c1></span><span class=mf>0.8</span> <span class=o>*</span> <span class=mi>2</span> <span class=o>=</span> <span class=mf>1.6</span> <span class=c1>// 1
+</span><span class=c1></span><span class=mf>0.6</span> <span class=o>*</span> <span class=mi>2</span> <span class=o>=</span> <span class=mf>1.2</span> <span class=c1>// 1
+</span><span class=c1></span><span class=mf>0.2</span> <span class=o>*</span> <span class=mi>2</span> <span class=o>=</span> <span class=mf>0.4</span> <span class=c1>// 0
+</span><span class=c1>// ...
+</span></code></pre></td></tr></table></div></div></li><li><p>二进制转整数（除2取余）</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-js data-lang=js><span class=c1>// 11
+</span><span class=c1></span><span class=mi>11</span> <span class=o>/</span> <span class=mi>2</span> <span class=o>=</span> <span class=mi>5</span> <span class=c1>// 1
+</span><span class=c1></span><span class=mi>5</span> <span class=o>/</span> <span class=mi>2</span> <span class=o>=</span> <span class=mi>2</span> <span class=c1>// 1
+</span><span class=c1></span><span class=mi>2</span> <span class=o>/</span> <span class=mi>2</span> <span class=o>=</span> <span class=mf>1.25</span> <span class=c1>// 1 
+</span><span class=c1>// 1 + 1 + 1 = 3
+</span></code></pre></td></tr></table></div></div></li></ul><h2 id=按位操作符>按位操作符</h2><table><thead><tr><th align=center>别称</th><th align=center>运算符</th><th align=center>示例</th><th align=center>描述</th></tr></thead><tbody><tr><td align=center>按位与</td><td align=center>&</td><td align=center>a&b</td><td align=center>对于每个比特位， 只有两个操作数相应的比特位都是1时，结果才为1，否则为0。</td></tr><tr><td align=center>按位或</td><td align=center>|</td><td align=center>a|b</td><td align=center>对于每个比特位， 当两个操作数相应的比特位至少有一个1时，结果为1，否则为0。</td></tr><tr><td align=center>按位异或</td><td align=center>^</td><td align=center>a^b</td><td align=center>对于每个比特位， 当两个操作数相应的比特位有且只有一个1时，结果为1，否则为0。</td></tr><tr><td align=center>左移</td><td align=center>&#171;</td><td align=center>a&#171;b</td><td align=center>左移b (&lt; 32) 比特位，右边用0代替。</td></tr><tr><td align=center>有符号右移</td><td align=center>&#187;</td><td align=center>a&#187;b</td><td align=center>右移b (&lt; 32) 比特位，丢弃被移出的位。</td></tr><tr><td align=center>无符号右移</td><td align=center>&#187;></td><td align=center>a&#187;>b</td><td align=center>右移<code>b</code>(&lt; 32) 比特位，丢弃被移出的位，并使用 0 在左侧填充。</td></tr><tr><td align=center>按位非</td><td align=center>~</td><td align=center>~a</td><td align=center>对于每个比特位，反转操作数的比特位，即0变成1，1变成0。</td></tr></tbody></table><h2 id=一些在js中的技巧>一些在JS中的技巧</h2><ul><li>取奇偶</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-js data-lang=js><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=mi>7</span><span class=o>&amp;</span><span class=mi>1</span><span class=p>);</span> <span class=c1>// 1
+</span><span class=c1></span><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=mi>4</span><span class=o>&amp;</span><span class=mi>1</span><span class=p>);</span> <span class=c1>// 0
+</span></code></pre></td></tr></table></div></div><ul><li>取整</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-js data-lang=js><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=o>~~</span><span class=mf>7.77</span><span class=p>);</span>    <span class=c1>// 7
+</span><span class=c1></span><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=mf>7.77</span><span class=o>&lt;&lt;</span><span class=mi>0</span><span class=p>);</span> <span class=c1>// 7
+</span><span class=c1></span><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=mf>7.77</span><span class=o>&gt;&gt;</span><span class=mi>0</span><span class=p>);</span> <span class=c1>// 7
+</span></code></pre></td></tr></table></div></div><h2 id=运用>运用</h2><p>判断一个 9x9 的数独是否有效。只需要<strong>根据以下规则</strong>，验证已经填入的数字是否有效即可。</p><ol><li>数字 <code>1-9</code> 在每一行只能出现一次。</li><li>数字 <code>1-9</code> 在每一列只能出现一次。</li><li>数字 <code>1-9</code> 在每一个以粗实线分隔的 <code>3x3</code> 宫内只能出现一次。</li></ol><p><img class=lazyload src=/svg/loading.min.svg data-src=/images/bit/valid-sudoku.png data-srcset="/images/bit/valid-sudoku.png, /images/bit/valid-sudoku.png 1.5x, /images/bit/valid-sudoku.png 2x" data-sizes=auto alt=/images/bit/valid-sudoku.png title=valid-sudoku></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-js data-lang=js><span class=kd>var</span> <span class=nx>isValidSudoku</span> <span class=o>=</span> <span class=kd>function</span><span class=p>(</span><span class=nx>board</span><span class=p>)</span> <span class=p>{</span>
+  <span class=kr>const</span> <span class=nx>bitMap</span> <span class=o>=</span> <span class=p>[</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>];</span>
+  <span class=k>for</span> <span class=p>(</span><span class=kd>let</span> <span class=nx>row</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>row</span> <span class=o>&lt;</span> <span class=mi>9</span><span class=p>;</span> <span class=nx>row</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>for</span> <span class=p>(</span><span class=kd>let</span> <span class=nx>col</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>col</span> <span class=o>&lt;</span> <span class=mi>9</span><span class=p>;</span> <span class=nx>col</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
+      <span class=k>if</span> <span class=p>(</span><span class=nx>board</span><span class=p>[</span><span class=nx>row</span><span class=p>][</span><span class=nx>col</span><span class=p>]</span> <span class=o>===</span> <span class=s1>&#39;.&#39;</span><span class=p>)</span> <span class=k>continue</span><span class=p>;</span>
+      <span class=kr>const</span> <span class=nx>moveBit</span> <span class=o>=</span> <span class=nb>Number</span><span class=p>(</span><span class=nx>board</span><span class=p>[</span><span class=nx>row</span><span class=p>][</span><span class=nx>col</span><span class=p>])</span> <span class=o>-</span> <span class=mi>1</span><span class=p>;</span>
+      <span class=kr>const</span> <span class=nx>rowFlag</span> <span class=o>=</span> <span class=mi>1</span> <span class=o>&lt;&lt;</span> <span class=nx>moveBit</span><span class=p>;</span>
+      <span class=kr>const</span> <span class=nx>colFlag</span> <span class=o>=</span> <span class=mi>1</span> <span class=o>&lt;&lt;</span> <span class=mi>9</span> <span class=o>&lt;&lt;</span> <span class=nx>moveBit</span><span class=p>;</span>
+      <span class=kr>const</span> <span class=nx>subFlag</span> <span class=o>=</span> <span class=mi>1</span> <span class=o>&lt;&lt;</span> <span class=mi>9</span> <span class=o>&lt;&lt;</span> <span class=mi>9</span> <span class=o>&lt;&lt;</span> <span class=nx>moveBit</span><span class=p>;</span>
+      <span class=kr>const</span> <span class=nx>subIndex</span> <span class=o>=</span> <span class=nb>parseInt</span><span class=p>(</span><span class=nx>row</span> <span class=o>/</span> <span class=mi>3</span><span class=p>,</span> <span class=mi>10</span><span class=p>)</span> <span class=o>*</span> <span class=mi>3</span> <span class=o>+</span> <span class=nb>parseInt</span><span class=p>(</span><span class=nx>col</span> <span class=o>/</span> <span class=mi>3</span><span class=p>,</span> <span class=mi>10</span><span class=p>);</span>
+      <span class=k>if</span> <span class=p>(((</span><span class=nx>bitMap</span><span class=p>[</span><span class=nx>row</span><span class=p>]</span> <span class=o>&amp;</span> <span class=nx>rowFlag</span><span class=p>)</span> <span class=o>===</span> <span class=nx>rowFlag</span><span class=p>)</span>
+        <span class=o>||</span> <span class=p>((</span><span class=nx>bitMap</span><span class=p>[</span><span class=nx>col</span><span class=p>]</span> <span class=o>&amp;</span> <span class=nx>colFlag</span><span class=p>)</span> <span class=o>===</span> <span class=nx>colFlag</span><span class=p>)</span>
+        <span class=o>||</span> <span class=p>((</span><span class=nx>bitMap</span><span class=p>[</span><span class=nx>subIndex</span><span class=p>]</span> <span class=o>&amp;</span> <span class=nx>subFlag</span><span class=p>)</span> <span class=o>===</span> <span class=nx>subFlag</span><span class=p>)</span>
+      <span class=p>)</span> <span class=p>{</span>
+        <span class=k>return</span> <span class=kc>false</span><span class=p>;</span>
+      <span class=p>}</span>
+      <span class=nx>bitMap</span><span class=p>[</span><span class=nx>row</span><span class=p>]</span> <span class=o>|=</span> <span class=nx>rowFlag</span><span class=p>;</span>
+      <span class=nx>bitMap</span><span class=p>[</span><span class=nx>col</span><span class=p>]</span> <span class=o>|=</span> <span class=nx>colFlag</span><span class=p>;</span>
+      <span class=nx>bitMap</span><span class=p>[</span><span class=nx>subIndex</span><span class=p>]</span> <span class=o>|=</span> <span class=nx>subFlag</span><span class=p>;</span>
+    <span class=p>}</span>
+  <span class=p>}</span>
+  <span class=k>return</span> <span class=kc>true</span><span class=p>;</span>
+<span class=p>};</span>
+</code></pre></td></tr></table></div></div><p>这里来解释一下上面这个算法。</p><p>首先这里的bitmap代表的是什么呢？这也是我一开始看不懂这个答案的主要点。</p><p>它指的是，这个二维数组的地图。也就是说，第一列和第一行的所有数都会设置到bitmap地图的第一个数中。第二列和第二行的所有数都会设置到bitmap的第二个数中。于此类推，第九列和第九行的所有数都会设置到bitmap的第九个数中。</p><p>从代码块来看一下，设置数的时候分别干了什么？</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-js data-lang=js><span class=kr>const</span> <span class=nx>moveBit</span> <span class=o>=</span> <span class=nb>Number</span><span class=p>(</span><span class=nx>board</span><span class=p>[</span><span class=nx>row</span><span class=p>][</span><span class=nx>col</span><span class=p>])</span> <span class=o>-</span> <span class=mi>1</span><span class=p>;</span>
+      <span class=kr>const</span> <span class=nx>rowFlag</span> <span class=o>=</span> <span class=mi>1</span> <span class=o>&lt;&lt;</span> <span class=nx>moveBit</span><span class=p>;</span>
+      <span class=kr>const</span> <span class=nx>colFlag</span> <span class=o>=</span> <span class=mi>1</span> <span class=o>&lt;&lt;</span> <span class=mi>9</span> <span class=o>&lt;&lt;</span> <span class=nx>moveBit</span><span class=p>;</span>
+      <span class=kr>const</span> <span class=nx>subFlag</span> <span class=o>=</span> <span class=mi>1</span> <span class=o>&lt;&lt;</span> <span class=mi>9</span> <span class=o>&lt;&lt;</span> <span class=mi>9</span> <span class=o>&lt;&lt;</span> <span class=nx>moveBit</span><span class=p>;</span>
+      <span class=kr>const</span> <span class=nx>subIndex</span> <span class=o>=</span> <span class=nb>parseInt</span><span class=p>(</span><span class=nx>row</span> <span class=o>/</span> <span class=mi>3</span><span class=p>,</span> <span class=mi>10</span><span class=p>)</span> <span class=o>*</span> <span class=mi>3</span> <span class=o>+</span> <span class=nb>parseInt</span><span class=p>(</span><span class=nx>col</span> <span class=o>/</span> <span class=mi>3</span><span class=p>,</span> <span class=mi>10</span><span class=p>);</span>
+      <span class=k>if</span> <span class=p>(((</span><span class=nx>bitMap</span><span class=p>[</span><span class=nx>row</span><span class=p>]</span> <span class=o>&amp;</span> <span class=nx>rowFlag</span><span class=p>)</span> <span class=o>===</span> <span class=nx>rowFlag</span><span class=p>)</span>
+        <span class=o>||</span> <span class=p>((</span><span class=nx>bitMap</span><span class=p>[</span><span class=nx>col</span><span class=p>]</span> <span class=o>&amp;</span> <span class=nx>colFlag</span><span class=p>)</span> <span class=o>===</span> <span class=nx>colFlag</span><span class=p>)</span>
+        <span class=o>||</span> <span class=p>((</span><span class=nx>bitMap</span><span class=p>[</span><span class=nx>subIndex</span><span class=p>]</span> <span class=o>&amp;</span> <span class=nx>subFlag</span><span class=p>)</span> <span class=o>===</span> <span class=nx>subFlag</span><span class=p>)</span>
+      <span class=p>)</span> <span class=p>{</span>
+        <span class=k>return</span> <span class=kc>false</span><span class=p>;</span>
+      <span class=p>}</span>
+      <span class=nx>bitMap</span><span class=p>[</span><span class=nx>row</span><span class=p>]</span> <span class=o>|=</span> <span class=nx>rowFlag</span><span class=p>;</span>
+      <span class=nx>bitMap</span><span class=p>[</span><span class=nx>col</span><span class=p>]</span> <span class=o>|=</span> <span class=nx>colFlag</span><span class=p>;</span>
+      <span class=nx>bitMap</span><span class=p>[</span><span class=nx>subIndex</span><span class=p>]</span> <span class=o>|=</span> <span class=nx>subFlag</span><span class=p>;</span>
+</code></pre></td></tr></table></div></div><p>这里是什么意思呢？</p><p>我们都知道0-9，是9个不同的数字，分别对应bitmap</p><p><code>000000000|00000000|000000000</code></p><p>中的每位数。先忽略最左边部分的情况下（这部分另外提出讨论），比如我dp(1,1)为8，那么bitmap就会变成</p><p><code>000000000|000000010|000000010</code></p><p>同理，如果dp(1,2)为8的话，那么就会在设置bitmap的时候发现同样位置上已经有个<code>1</code>占位了。那么就会执行判断条件</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-js data-lang=js><span class=k>if</span> <span class=p>(((</span><span class=nx>bitMap</span><span class=p>[</span><span class=nx>row</span><span class=p>]</span> <span class=o>&amp;</span> <span class=nx>rowFlag</span><span class=p>)</span> <span class=o>===</span> <span class=nx>rowFlag</span><span class=p>)</span>
+  <span class=o>||</span> <span class=p>((</span><span class=nx>bitMap</span><span class=p>[</span><span class=nx>col</span><span class=p>]</span> <span class=o>&amp;</span> <span class=nx>colFlag</span><span class=p>)</span> <span class=o>===</span> <span class=nx>colFlag</span><span class=p>)</span>
+  <span class=o>||</span> <span class=p>((</span><span class=nx>bitMap</span><span class=p>[</span><span class=nx>subIndex</span><span class=p>]</span> <span class=o>&amp;</span> <span class=nx>subFlag</span><span class=p>)</span> <span class=o>===</span> <span class=nx>subFlag</span><span class=p>)</span>
+<span class=p>)</span> <span class=p>{</span>
+  <span class=k>return</span> <span class=kc>false</span><span class=p>;</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div><p>返回<code>false</code>。那么接下来，我们看看第一部分。九宫格的数字怎么单独隔离出来呢？看下代码。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-js data-lang=js><span class=kr>const</span> <span class=nx>subIndex</span> <span class=o>=</span> <span class=nb>parseInt</span><span class=p>(</span><span class=nx>row</span> <span class=o>/</span> <span class=mi>3</span><span class=p>,</span> <span class=mi>10</span><span class=p>)</span> <span class=o>*</span> <span class=mi>3</span> <span class=o>+</span> <span class=nb>parseInt</span><span class=p>(</span><span class=nx>col</span> <span class=o>/</span> <span class=mi>3</span><span class=p>,</span> <span class=mi>10</span><span class=p>);</span>
+</code></pre></td></tr></table></div></div><p>我们先想象一下，一个9X9的数组是不应该有9个9宫格。那么就很清晰了。首先，第一个九宫格的区域范围可以表示为在这个区间范围内<code>row:[0-2],col:[0-2]</code>；也就是说，这个范围内的所有数都应该在bitmap中的第一个数中。</p><p>所以上面的公式就这样的出来了。我们验证一下这个公式。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-js data-lang=js><span class=kr>const</span> <span class=nx>subIndex</span> <span class=o>=</span> <span class=nb>parseInt</span><span class=p>(</span><span class=nx>row</span> <span class=o>/</span> <span class=mi>3</span><span class=p>,</span> <span class=mi>10</span><span class=p>)</span> <span class=o>*</span> <span class=mi>3</span> <span class=o>+</span> <span class=nb>parseInt</span><span class=p>(</span><span class=nx>col</span> <span class=o>/</span> <span class=mi>3</span><span class=p>,</span> <span class=mi>10</span><span class=p>);</span>
+
+<span class=c1>//输入dp(1,1) 返回 0
+</span><span class=c1>// dp(2,0) returns 0
+</span><span class=c1>// dp(7,8) returns 9
+</span><span class=c1>// dp(8,8) returns 9
+</span></code></pre></td></tr></table></div></div><p>好的，那么这个bitmap算法就完成拉。</p><p>感谢看到这里的朋友。希望看完这篇文章能给大家一点收获。</p><h2 id=参考>参考</h2><ol><li><a href=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators>https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators</a></li><li><a href=https://leetcode-cn.com/problems/valid-sudoku/>https://leetcode-cn.com/problems/valid-sudoku/</a></li><li><a href=https://www.w3school.com.cn/js/js_obj_number.asp>https://www.w3school.com.cn/js/js_obj_number.asp</a></li></ol></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span>更新于 2020-07-08</span></div><div class=post-info-license></div></div><div class=post-info-line><div class=post-info-md></div><div class=post-info-share><span></span></div></div></div><div class=post-info-more><section class=post-tags><i class="fas fa-tags fa-fw"></i>&nbsp;<a href=/tags/web/>web</a></section><section><span><a href=javascript:void(0); onclick=window.history.back();>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span></section></div><div class=post-nav><a href=/how-to-build-blog/ class=prev rel=prev title="How to Build Blog"><i class="fas fa-angle-left fa-fw"></i>How to Build Blog</a>
+<a href=/cdn/ class=next rel=next title=CDN>CDN<i class="fas fa-angle-right fa-fw"></i></a></div></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line></div></div></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部><i class="fas fa-arrow-up fa-fw"></i></a><a href=# id=view-comments class=fixed-button title=查看评论><i class="fas fa-comment fa-fw"></i></a></div><script type=text/javascript src=https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js></script><script type=text/javascript>window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{}};</script><script type=text/javascript src=/js/theme.min.js></script></body></html>
