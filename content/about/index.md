@@ -19,10 +19,10 @@ math:
 
 不断暴露自己，记录当下的生活和乐趣，这样看起来生活可能并没那么苦。 -->
 
-- 我叫`stein`，目前是一位前端工程师
+我叫`stein`，目前是一位前端工程师
 
-- github：<https://github.com/sjisntsuperman>
+github：<https://github.com/sjisntsuperman>
 
-- keep calm， keep passion
+keep calm， keep passion
 
-- 我们一起努力
+我们一起努力

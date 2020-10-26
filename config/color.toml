@@ -1,9 +1,9 @@
-baseURL = "http://steinw.cc"
+baseURL = "https://example.com/"
 languageCode = "en"
-title = "Steinw's blog"
+title = "Color Your World"
 theme = "color-your-world"
 
-copyright = "Copyright © 2008–2020, powered by Hugo\n All rights reserved."
+copyright = "Copyright © 2008–2020, Steve Francia and the Hugo Authors;\n All rights reserved."
 
 enableEmoji = true
 enableInlineShortcodes = true
@@ -25,10 +25,10 @@ paginate = 5
 [params]
   
   # Site description
-  description = "Steinw's personal website"
+  description = "John Doe's personal website"
   
   # Author
-  author      = "Steinw"
+  author      = "John Doe"
   authorDesc  = "Some indescribable horror."
   
   # Site cover, for Open Graph, Twitter Cards and Schema.org
@@ -82,8 +82,8 @@ paginate = 5
     # Text placeholders. As usual, comment the lines if you don't want use them
     # The "subject" below will only be used if the "subject" above doesn't exist (ie.: commented/deleted)
     [params.contact.placeholder]
-      name    = "Steinw"
-      email   = "steinw@example.com"
+      name    = "Jane Doe"
+      email   = "janedoe@example.com"
       subject = 'Just saying "hi"'
       message = "Aenean lacinia bibendum nulla sed consectetur. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla nullam quis risus."
 
@@ -124,7 +124,7 @@ paginate = 5
     # More colors, pick as many as you want (not really sure if there's a limit)
     # Apparently these may not show up on every modern browser (ie. Firefox)
     # There's no default value. Used here just as example
-    presets = [ "#1f676b", "#f3a530", "#902b37", "#1dbc91", "#754e85", "#7fc121", "#a8314a", "#ff7433", "#3e6728", "#c063bd", "#fa5143" ]
+    presets = [ "#1f676b", "#f3a530", "#902b37", "#1dbc91", "#754e85", "#7fc121", "#a8314a", "#ff7433", "#3e6728", "#c063bd" ]
     
     # Use an icon or text for footnote return links
     # The default is false
@@ -254,10 +254,10 @@ paginate = 5
         weight = 2
         url = "posts/"
       
-      #[[languages.en.menu.main]]
-      #  name = "Contact"
-      #  weight = 3
-      #  url = "contact/"
+      [[languages.en.menu.main]]
+        name = "Contact"
+        weight = 3
+        url = "contact/"
 
     [languages.pt]
     
@@ -297,6 +297,6 @@ paginate = 5
         
           [languages.pt.params.contact.placeholder]
             name    = "Joana Ninguém"
-            email   = "me@steinw.com"
+            email   = "me@janedoe.com"
             subject = 'Só dando um "oi"'
             message = "Aenean lacinia bibendum nulla sed consectetur. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla nullam quis risus."
