@@ -1,5 +1,4 @@
 {
-    "alias": "http://steinw.cc",
     "build": {
       "env": {
         "HUGO_VERSION": "0.71.0"
