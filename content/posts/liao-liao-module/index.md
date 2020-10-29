@@ -26,6 +26,8 @@ lightgallery: false
 license: ""
 ---
 
+## 什么是模块
+
 将一个复杂的程序依据一定的规则(规范)封装成几个块(文件), 并进行组合在一起，块的内部数据与实现是私有的, 只是向外部暴露一些接口(方法)与外部其它模块通信。
 
 ## 进化史
@@ -152,24 +154,67 @@ Module.require 就是 require的原生引用。 它们的效果是一样的。
 
 ### require.main
 
-node 通过判断 require.main.filename == 当前运行的filename 来决定是否同步运行。
+node 通过判断 `require.main.filename == 当前运行的filename` 来决定是否同步运行。
 
-例如 require('./test') 不是同步。而node filename 是。
+例如 require('./test') 不是同步。而node filename 是同步的。
 
 ### require.cache
 
 require.cache 会把值的引用缓存起来。即使循环引用，也会优先访问这个cache里面的值，以至于不会导致循环引用的崩溃情况。
 
-不过，也会导致线上环境不能获取最新的文件。
-
 ## es6 module和commonjs 共存
 
-实则, es6 module转化为commonjs, 成为require中的 __esModule 来存储。
+在使用babel的场景中, es6 module转化为commonjs, 成为require中的 __esModule 来存储。
 
 require 引用 es6 中 export default 的模块的话， require(xx).default 即可。
 
+在node v13.0(可能不准确) 以后的版本中，nodejs 已经支持了 esmodule的写法。它们是可以互相转换的。
+
+其中有些许区别，比如 在esmodule中，不会存储值到 require.cache中，而是用另外一个缓存来记忆值。
+
+```js
+// a.js
+exports.a = 1
+
+// b.js
+import {a} from 'a.js'
+
+```
+
 ## module.exports和exports
+
+实则，exports 是 module.exports 的语法糖。不过又有点区别。
+
+比如说， 后面的 exports 的话，会覆盖掉 module.exports 的值。
+
+```js
+module.exports.hello = true; // 从模块的引用中导出。
+exports = { hello: false };  // 不导出，仅在模块中可用。
+
+module.exports = exports
+```
+
+仔细看文档的话，不难发现这个。
+
+```js
+function require(/* ... */) {
+  const module = { exports: {} };
+  ((module, exports) => {
+    // 模块代码在这。在这个例子中，定义了一个函数。
+    function someFunc() {}
+    exports = someFunc;
+    // 此时，exports 不再是一个 module.exports 的快捷方式，
+    // 且这个模块依然导出一个空的默认对象。
+    module.exports = someFunc;
+    // 此时，该模块导出 someFunc，而不是默认对象。
+  })(module, module.exports);
+  return module.exports;
+}
+```
+
+这样require为何能引入模块就不难理解了。
 
 ## 参考
 
 1. <https://juejin.im/post/5c17ad756fb9a049ff4e0a62>
+2. <http://nodejs.cn/api/modules.html#modules_module_exports>
