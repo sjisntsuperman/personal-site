@@ -1,9 +1,9 @@
-baseURL = "https://example.com/"
+baseURL = "http://steinw.cc"
 languageCode = "en"
-title = "Color Your World"
+title = "Steinw's blog"
 theme = "color-your-world"
 
-copyright = "Copyright © 2008–2020, Steve Francia and the Hugo Authors;\n All rights reserved."
+copyright = "Copyright © 2008–2020, powered by Hugo\n All rights reserved."
 
 enableEmoji = true
 enableInlineShortcodes = true
@@ -25,10 +25,10 @@ paginate = 5
 [params]
   
   # Site description
-  description = "John Doe's personal website"
+  description = "Steinw's personal website"
   
   # Author
-  author      = "John Doe"
+  author      = "Steinw"
   authorDesc  = "Some indescribable horror."
   
   # Site cover, for Open Graph, Twitter Cards and Schema.org
@@ -82,8 +82,8 @@ paginate = 5
     # Text placeholders. As usual, comment the lines if you don't want use them
     # The "subject" below will only be used if the "subject" above doesn't exist (ie.: commented/deleted)
     [params.contact.placeholder]
-      name    = "Jane Doe"
-      email   = "janedoe@example.com"
+      name    = "Steinw"
+      email   = "steinw@example.com"
       subject = 'Just saying "hi"'
       message = "Aenean lacinia bibendum nulla sed consectetur. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla nullam quis risus."
 
@@ -119,12 +119,12 @@ paginate = 5
 
     # Accent colors for light and dark mode respectively
     lightAccent  = "#225670" # Default is "#225670"
-    darkAccent   = "#dd587c" # Default is "#dd587c"
+    darkAccent   = "#fa5143" # Default is "#fa5143"
 
     # More colors, pick as many as you want (not really sure if there's a limit)
     # Apparently these may not show up on every modern browser (ie. Firefox)
     # There's no default value. Used here just as example
-    presets = [ "#1f676b", "#f3a530", "#902b37", "#1dbc91", "#754e85", "#7fc121", "#a8314a", "#ff7433", "#3e6728", "#c063bd" ]
+    presets = [ "#1f676b", "#f3a530", "#902b37", "#1dbc91", "#754e85", "#7fc121", "#a8314a", "#ff7433", "#3e6728", "#c063bd", "#fa5143" ]
     
     # Use an icon or text for footnote return links
     # The default is false
@@ -254,49 +254,7 @@ paginate = 5
         weight = 2
         url = "posts/"
       
-      [[languages.en.menu.main]]
-        name = "Contact"
-        weight = 3
-        url = "contact/"
-
-    [languages.pt]
-    
-      languageName  = "Português"
-      
-      copyright = "Copyright © 2008–2020, Steve Francia e os autores do Hugo;\n Todos os direitos reservados."
-
-      [languages.pt.params]        
-        description = "Sítio pessoal de João Ninguém"
-        
-        author      = "João Ninguém"
-        authorDesc  = "Algum horror indescritível."
-        
-        [languages.pt.params.notFound]
-          title         = "Página não encontrada"
-          description   = "Essa página não foi encontrada."
-          paragraph     = "Nada a se ver aqui, colega."
-        
-        [languages.pt.params.search]
-          enable = true
-          placeholder = "exemplo: lorem ipsum"
-
-      [languages.pt.menu]
-
-        [[languages.pt.menu.main]]
-          name = "Postagens"
-          weight = 2
-          url = "posts/"
-        
-        [[languages.pt.menu.main]]
-          name = "Contato"
-          weight = 3
-          url = "contact/"
-        
-        [languages.pt.params.contact]
-          subject = [ 'Só dando um "oi"', "Eu sei o que você fez no inverno passado", "... Aquilo é uma preguiça?", "お前はもう死んでいる。" ]
-        
-          [languages.pt.params.contact.placeholder]
-            name    = "Joana Ninguém"
-            email   = "me@janedoe.com"
-            subject = 'Só dando um "oi"'
-            message = "Aenean lacinia bibendum nulla sed consectetur. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla nullam quis risus."
+      #[[languages.en.menu.main]]
+      #  name = "Contact"
+      #  weight = 3
+      #  url = "contact/"
