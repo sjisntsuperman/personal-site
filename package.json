@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "hugo"
+    "vercel-build": "./vercel-submodule-workaround.sh && npm run build",
+    "build": "hugo -D --gc"
   },
   "repository": {
     "type": "git",
