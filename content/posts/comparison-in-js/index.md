@@ -6,10 +6,7 @@ lastmod: 2020-09-24T19:02:25+08:00
 # draft: true
 author: ""
 authorLink: ""
-description: "
-由于没有魔女能力加持，还是好好学学类型转换。
-
-JS中的类型转换是出名的大坑，这里简单介绍一下JS的类型转换。"
+description: ""
 
 tags: [
     “web
@@ -19,7 +16,7 @@ categories: []
 hiddenFromHomePage: false
 hiddenFromSearch: false
 
-featuredImage: ""
+featuredImage: "featured-image.jpg"
 featuredImagePreview: ""
 
 toc:

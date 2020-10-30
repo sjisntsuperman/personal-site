@@ -17,7 +17,7 @@ categories: []
 hiddenFromHomePage: false
 hiddenFromSearch: false
 
-featuredImage: ""
+featuredImage: "featured-image.png"
 featuredImagePreview: ""
 
 toc:

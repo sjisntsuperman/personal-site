@@ -2,8 +2,12 @@
 title: "CDN"
 date: 2020-07-09T13:01:13+08:00
 tags: ["web"]
-description: "五分钟带你了解CDN。"
-summary: "五分钟带你了解CDN。"
+description: ""
+summary: ""
+
+featuredImage: "featured-image.jpg"
+featuredImagePreview: ""
+
 ---
 
 > 五分钟带你了解CDN。

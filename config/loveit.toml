@@ -5,8 +5,8 @@ defaultContentLanguage = "zh-cn"
 # theme
 # 主题
 # theme = "paper"
-# theme = "LoveIt"
-theme = "color-your-world"
+theme = "LoveIt"
+# theme = "color-your-world"
 # themes directory
 # 主题目录
 # themesDir = "themes"

@@ -16,7 +16,7 @@ categories: []
 hiddenFromHomePage: false
 hiddenFromSearch: false
 
-featuredImage: ""
+featuredImage: "featured-image.jpg"
 featuredImagePreview: ""
 
 toc:
@@ -327,7 +327,7 @@ server.on("request", async (req, res) => {
 });
 ```
 
-### uploadHandle
+### uploadHandler
 
 这个句柄具体要处理的是把接受到的buffer写入到本地文件中。
 
@@ -374,7 +374,7 @@ multipart.parse(req, async (err, fields, files) => {
 };
 ```
 
-### mergeHandle
+### mergeHandler
 
 这个句柄主要是将buffer合并。
 
@@ -409,7 +409,7 @@ res.end(
 };
 ```
 
-### checkHandle
+### checkHandler
 
 这个句柄主要检查本地有没已上传的切片。
 
