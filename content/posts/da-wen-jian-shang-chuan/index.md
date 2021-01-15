@@ -34,7 +34,7 @@ license: ""
 
 demo在 <https://github.com/sjisntsuperman/some-demo> 里面， 有兴趣的可以自己clone下来使用。其中部分代码引用摘录于网上的文章，这里是自己再整理。所以可能会有些出入。
 
-## 客户单实现
+## 客户端实现
 
 首先实现 utils 工具库。这里要用到的有，请求库 以及 请求并发限制的方法。
 

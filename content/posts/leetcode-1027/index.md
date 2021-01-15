@@ -1,5 +1,5 @@
 ---
-title: "leetcode-1027 最长等差数列"
+title: "LeetCode-1027 最长等差数列"
 subtitle: ""
 date: 2020-10-28T07:34:57+08:00
 lastmod: 2020-10-28T07:34:57+08:00

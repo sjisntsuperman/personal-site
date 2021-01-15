@@ -19,10 +19,10 @@ math:
 
 不断暴露自己，记录当下的生活和乐趣，这样看起来生活可能并没那么苦。 -->
 
-我叫`stein`，目前是一位前端工程师
+我叫`SteinWei`，因为缩写好像看起来更酷一点，因此写成`Steinw`，目前是一位前端工程师
 
 github：<https://github.com/sjisntsuperman>
 
-keep calm， keep passion
+Keep calm， keep passion
 
 我们一起努力

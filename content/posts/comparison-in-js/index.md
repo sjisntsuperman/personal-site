@@ -16,7 +16,7 @@ categories: []
 hiddenFromHomePage: false
 hiddenFromSearch: false
 
-featuredImage: "featured-image.jpg"
+featuredImage: "featured-image.png"
 featuredImagePreview: ""
 
 toc:
@@ -33,9 +33,7 @@ license: ""
 
 > 从零开始的类型转换？
 
-由于没有魔女能力加持，还是好好学学类型转换。
-
-JS中的类型转换是出名的大坑，这里简单介绍一下JS的类型转换。
+其实大部分可以从ES6规范中看到。下面就直接举例子了。
 
 ## JS中的类型
 
@@ -152,14 +150,12 @@ a == 1 && a == 2 && a == 3 // true
 - typeof 判断类型
 - instanceof 判断继承关系
 
-栗子
-
-可能没注意的坑：
+小技巧
 
 - 在判断object类型的时候用typeof，注意把null排除掉
 
 ```js
-typeof x == 'object' && x !== null
+typeof x === 'object' && x !== null
 ```
 
 ## 比较符
@@ -174,20 +170,39 @@ typeof x == 'object' && x !== null
 {} == 0
 // {}=>'[object Object]'=>NaN=>false
 null == undefined
-// true 历史原因
+// true 
 ```
 
-一般流程：
+以下内容摘录自ES6规范：
 
-1. `left`和`right`都不是引用类型
-2. `left`为String，toNumber(right)
-3. `left`为Boolean，toNumber(right)
-4. `left`为Number，toNumber(right)
-   1. `+0 != -0`
-   2. ...
-5. `left`和`right`其中一个为引用类型或者两者都是
-6. 引用类型遵循先`valueOf`后`toString`的原则转化为原始值，再根据上面的条件判断
-7. 比较特殊的: `null==undefined`
+The comparison x == y, where x and y are values, produces **true** or **false**. Such a comparison is performed as follows:
+
+1. If [Type](#sec-8)(*x*) is the same as [Type](#sec-8)(*y*), then
+    1.  If [Type](#sec-8)(*x*) is Undefined, return **true**.
+    2.  If [Type](#sec-8)(*x*) is Null, return **true**.
+    3.  If [Type](#sec-8)(*x*) is Number, then
+        1.  If *x* is **NaN**, return **false**.
+        2.  If *y* is **NaN**, return **false**.
+        3.  If *x* is the same Number value as *y*, return **true**.
+        4.  If *x* is **+0** and *y* is **−0**, return **true**.
+        5.  If *x* is **−0** and *y* is **+0**, return **true**.
+        6.  Return **false**.
+    4.  If [Type](#sec-8)(*x*) is String, then return **true** if *x* and *y* are exactly the same sequence of characters (same length and same characters in corresponding positions). Otherwise, return **false**.
+    5.  If [Type](#sec-8)(*x*) is Boolean, return **true** if *x* and *y* are both **true** or both **false**. Otherwise, return **false**.
+    6.  Return **true** if *x* and *y* refer to the same object. Otherwise, return **false**.
+2.  If *x* is **null** and *y* is **undefined**, return **true**.
+3.  If *x* is **undefined** and *y* is **null**, return **true**.
+4.  If [Type](#sec-8)(*x*) is Number and [Type](#sec-8)(*y*) is String,
+    return the result of the comparison *x* == [ToNumber](#sec-9.3)(*y*).
+5.  If [Type](#sec-8)(*x*) is String and [Type](#sec-8)(*y*) is Number,
+    return the result of the comparison [ToNumber](#sec-9.3)(*x*) == *y*.
+6.  If [Type](#sec-8)(*x*) is Boolean, return the result of the comparison [ToNumber](#sec-9.3)(*x*) == *y*.
+7.  If [Type](#sec-8)(*y*) is Boolean, return the result of the comparison *x* == [ToNumber](#sec-9.3)(*y*).
+8.  If [Type](#sec-8)(*x*) is either String or Number and [Type](#sec-8)(*y*) is Object,
+    return the result of the comparison *x* == [ToPrimitive](#sec-9.1)(*y*).
+9.  If [Type](#sec-8)(*x*) is Object and [Type](#sec-8)(*y*) is either String or Number,
+    return the result of the comparison [ToPrimitive](#sec-9.1)(*x*) == *y*.
+10.  Return **false**.
 
 ### ===
 
@@ -213,7 +228,7 @@ JS中比较特殊的一个关键字，就是NAN。
 
 那么`Number().isNAN()`与`window.isNAN()`又有什么区别呢？
 
-看下面的几个栗子
+看下面的几个栗子就懂了
 
 ```js
 NAN === NAN // false
@@ -221,11 +236,15 @@ NAN === NAN // false
 window.isNAN('String') // true
 Number.isNAN('String') // false
 
+window.isNAN({}) // true
+Number.isNAN({}) // false
+
+window.isNAN(false) // true
+Number.isNAN(false) // true
+
 0/0 // NAN
 0 * Infinity // NAN
 ```
-
-至于他们有什么具体差异，因为时间关系
 
 ## 运算符号
 

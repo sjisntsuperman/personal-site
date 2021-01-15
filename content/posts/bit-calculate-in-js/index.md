@@ -4,6 +4,7 @@ date: 2020-07-08T12:00:41+08:00
 tags: ["web"]
 description: "十分钟带你了解JS中的位运算。"
 summary: "十分钟带你了解JS中的位运算。"
+featuredImage: "featured-image.png"
 ---
 
 > 十分钟带你了解JS中的位运算。

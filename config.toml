@@ -460,7 +460,7 @@ enableEmoji = true
     [params.header.title]
       # URL of the LOGO
       # LOGO 的 URL
-      logo = ""
+      logo = "/images/avatar.png"
       # title name
       # 标题名称
       name = "Steinw's blog"
